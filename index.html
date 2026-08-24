@@ -91,6 +91,7 @@
   header{
     position:fixed;top:0;left:0;right:0;z-index:200;
     background:rgba(246,241,231,0.86);
+    -webkit-backdrop-filter:blur(10px);
     backdrop-filter:blur(10px);
     border-bottom:1px solid var(--line);
     box-shadow:0 0 0 rgba(0,0,0,0);
@@ -864,7 +865,7 @@
     const focusables = container.querySelectorAll(
       'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])'
     );
-    if(focusables.length) focusables[0].focus();
+    if(focusables.length) focusables[0].focus({ preventScroll: true });
     container.__trapHandler = function(e){
       if(e.key !== 'Tab') return;
       const items = Array.from(container.querySelectorAll(
@@ -1707,7 +1708,9 @@
     });
 
     document.body.classList.add('modal-open');
-    trapFocus(document.querySelector('.modal-panel'));
+    const panelEl = document.querySelector('.modal-panel');
+    if(panelEl) panelEl.scrollTop = 0;
+    trapFocus(panelEl);
   }
 
   function renderModalMedia(){

@@ -449,10 +449,10 @@
   .map-body{padding:26px 30px 30px;}
   .map-body p{color:var(--gray);font-size:13.5px;margin:4px 0 20px;}
   .modal-media{
-    background:var(--cream2);display:flex;align-items:center;justify-content:center;
-    padding:40px;position:relative;min-height:280px;overflow:hidden;
+    background:var(--cream2);position:relative;overflow:hidden;
+    aspect-ratio:3/4;
   }
-  .modal-media svg{width:64%;height:64%;}
+  .modal-media svg{width:64%;height:64%;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);}
   .modal-media img{
     position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
     filter:saturate(0.92) contrast(1.04) brightness(1.03) sepia(0.04);
@@ -1201,6 +1201,18 @@
           price: 25,
           sizes: [{ size: "S", available: true }, { size: "M", available: true }, { size: "L", available: true }],
           images: ["images/p48-front.jpg"]
+        },
+        {
+          name: "Franela estampados combinados ZARA",
+          price: 25,
+          sizes: [{ size: "M", available: true }, { size: "L", available: true }],
+          images: ["images/p78-front.jpg", "images/p78-2.jpg", "images/p78-3.jpg"]
+        },
+        {
+          name: "Franela con motivo estampado loose fit H&M",
+          price: 20,
+          sizes: [{ size: "S", available: true }, { size: "M", available: true }],
+          images: ["images/p79-front.jpg", "images/p79-back.jpg"]
         }
       ]
     },

@@ -42,9 +42,14 @@
     color:var(--black);
     font-family:'Inter',sans-serif;
     -webkit-font-smoothing:antialiased;
-    overflow-x:hidden;
     position:relative;
   }
+  /* Nota: NO usar overflow-x:hidden en <html>/<body>. Safari/WebKit (iOS y macOS)
+     tiene un bug conocido por el cual IntersectionObserver deja de disparar sus
+     callbacks cuando el elemento raíz del documento tiene overflow-x:hidden, lo
+     que dejaba todo el contenido .reveal atascado en opacity:0 en iPhone. Los
+     elementos que realmente se salen del flujo (los círculos decorativos de
+     .hero y .cta) ya se clipan a nivel de sección con su propio overflow:hidden. */
   body.locked{overflow:hidden;}
   body::before{
     content:"";
@@ -1453,11 +1458,22 @@
   updateHeaderScroll();
 
   /* ====== SCROLL REVEAL ====== */
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
-    });
-  }, { threshold: 0.12 });
+  const io = ('IntersectionObserver' in window)
+    ? new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+        });
+      }, { threshold: 0.12 })
+    : { observe(){} };
+
+  /* Red de seguridad: si por cualquier motivo el observer no llega a disparar
+     (navegador sin soporte, algún bug de motor de render, etc.), revelamos
+     todo igual pasado un momento para que la información nunca quede oculta. */
+  window.addEventListener('load', () => {
+    setTimeout(() => {
+      document.querySelectorAll('.reveal:not(.in)').forEach(el => el.classList.add('in'));
+    }, 1500);
+  });
 
   /* ====== RENDER GRIDS ====== */
   Object.keys(PRODUCTS).forEach(catKey => {

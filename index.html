@@ -2,8 +2,12 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="format-detection" content="telephone=no, address=no, email=no, date=no">
+<meta name="theme-color" content="#F6F1E7">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
 <title>Dtup — Ropa de hombre</title>
 <meta name="description" content="Dtup — ropa de hombre en Maracaibo. Franelas, pantalones y hoodies con corte y caída que se notan de lejos. Envíos a nivel nacional, tienda física en C.C. Camoruco.">
 <meta property="og:title" content="Dtup — Ropa de hombre">
@@ -13,11 +17,15 @@
 <link rel="canonical" href="https://dtup.shop/">
 <link rel="icon" type="image/png" href="images/logo.png?v=2">
 <link rel="apple-touch-icon" href="images/logo.png?v=2">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
+  /* Tipografía 100% nativa del sistema — sin dependencia de fuentes externas
+     (Google Fonts fallaba/tardaba en algunos escenarios de iOS: bloqueadores
+     de contenido, Modo de datos reducido, Retransmisión Privada, redes lentas).
+     Cada plataforma usa su propia fuente del sistema, así que se ve nítida y
+     carga instantánea en iOS, Android, Windows y macOS por igual. */
   :root{
+    --font-sans:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;
+    --font-serif:ui-serif,Georgia,Cambria,'Times New Roman',Times,serif;
     --cream:#F6F1E7;
     --cream2:#EDE4D3;
     --white:#FFFFFF;
@@ -34,22 +42,19 @@
     --offwhite:#F3F0E9;
   }
 
-  *{margin:0;padding:0;box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
+  *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;text-size-adjust:100%;}
 
   body{
     background:var(--cream);
     color:var(--black);
-    font-family:'Inter',sans-serif;
+    font-family:var(--font-sans);
     -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+    text-rendering:optimizeLegibility;
+    overflow-x:hidden;
     position:relative;
   }
-  /* Nota: NO usar overflow-x:hidden en <html>/<body>. Safari/WebKit (iOS y macOS)
-     tiene un bug conocido por el cual IntersectionObserver deja de disparar sus
-     callbacks cuando el elemento raíz del documento tiene overflow-x:hidden, lo
-     que dejaba todo el contenido .reveal atascado en opacity:0 en iPhone. Los
-     elementos que realmente se salen del flujo (los círculos decorativos de
-     .hero y .cta) ya se clipan a nivel de sección con su propio overflow:hidden. */
   body.locked{overflow:hidden;}
   body::before{
     content:"";
@@ -61,7 +66,7 @@
   img{display:block;max-width:100%;}
 
   .eyebrow{
-    font-family:'Inter',sans-serif;
+    font-family:var(--font-sans);
     font-size:11.5px;
     font-weight:600;
     letter-spacing:0.18em;
@@ -71,14 +76,14 @@
   .on-dark .eyebrow{color:#8FE0BB;}
 
   h1,h2,h3{
-    font-family:'Fraunces',serif;
+    font-family:var(--font-serif);
     font-weight:500;
     letter-spacing:-0.01em;
     line-height:1.02;
   }
 
   a{color:inherit;text-decoration:none;}
-  button{font-family:inherit;}
+  button{font-family:inherit;-webkit-appearance:none;appearance:none;border:none;background:none;}
 
   .wrap{max-width:1240px;margin:0 auto;padding:0 48px;}
 
@@ -173,13 +178,13 @@
   }
   .menu-list{display:flex;flex-direction:column;gap:6px;}
   .menu-list a{
-    font-family:'Fraunces',serif;font-weight:500;
+    font-family:var(--font-serif);font-weight:500;
     font-size:clamp(42px,9vw,88px);line-height:1.08;color:var(--black);
     display:inline-flex;align-items:center;gap:20px;
     transition:color .3s ease;width:fit-content;
   }
   .menu-list a .mn{
-    font-family:'Inter',sans-serif;font-size:13px;font-weight:600;
+    font-family:var(--font-sans);font-size:13px;font-weight:600;
     color:var(--green-dark);align-self:flex-start;margin-top:0.5em;
   }
   .menu-list a:hover{color:var(--green-dark);}
@@ -249,7 +254,7 @@
     display:flex;justify-content:space-between;align-items:flex-end;gap:40px;
     margin-bottom:48px;flex-wrap:wrap;
   }
-  .cat-num{font-family:'Fraunces',serif;font-size:15px;color:var(--green-dark);margin-bottom:14px;font-weight:500;}
+  .cat-num{font-family:var(--font-serif);font-size:15px;color:var(--green-dark);margin-bottom:14px;font-weight:500;}
   .category h2{font-size:clamp(34px, 4.2vw, 56px);}
   .cat-head p{color:var(--gray);font-size:15px;line-height:1.6;max-width:360px;}
 
@@ -335,8 +340,8 @@
   .features h3{font-size:clamp(30px,3.4vw,42px);}
   .feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);}
   .feat-card{background:var(--cream);padding:38px 34px;}
-  .feat-card .num{font-family:'Fraunces',serif;font-size:13px;color:var(--green-dark);margin-bottom:22px;}
-  .feat-card h4{font-family:'Fraunces',serif;font-weight:500;font-size:21px;margin-bottom:10px;}
+  .feat-card .num{font-family:var(--font-serif);font-size:13px;color:var(--green-dark);margin-bottom:22px;}
+  .feat-card h4{font-family:var(--font-serif);font-weight:500;font-size:21px;margin-bottom:10px;}
   .feat-card p{color:var(--gray);font-size:14px;line-height:1.6;}
   button.feat-card{text-align:left;width:100%;border:none;cursor:pointer;font-family:inherit;transition:background .25s ease;}
   button.feat-card:hover{background:var(--cream2);}
@@ -405,7 +410,8 @@
   body.cart-open .cart-scrim{opacity:1;visibility:visible;transition:opacity .35s ease, visibility 0s linear 0s;z-index:240;}
 
   .modal-panel{
-    background:var(--white);max-width:760px;width:100%;max-height:88vh;overflow:auto;
+    background:var(--white);max-width:760px;width:100%;max-height:88vh;max-height:88dvh;overflow:auto;
+    overscroll-behavior:contain;-webkit-overflow-scrolling:touch;
     border-radius:12px;display:grid;grid-template-columns:1fr 1fr;
     transform:translateY(16px) scale(0.98);
     transition:transform .35s cubic-bezier(.16,.8,.24,1);
@@ -496,7 +502,7 @@
   .modal-close svg{width:15px;height:15px;}
   .modal-body{padding:40px 36px;display:flex;flex-direction:column;}
   .modal-eyebrow{font-size:11px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--green-dark);margin-bottom:10px;}
-  .modal-body h3{font-family:'Fraunces',serif;font-size:28px;font-weight:500;margin-bottom:8px;}
+  .modal-body h3{font-family:var(--font-serif);font-size:28px;font-weight:500;margin-bottom:8px;}
   .modal-price{font-size:16px;color:var(--black);font-weight:600;margin-bottom:2px;}
   .modal-price .was{text-decoration:line-through;opacity:0.55;margin-right:8px;font-weight:500;}
   .modal-price .now{color:var(--green-dark);}
@@ -541,13 +547,13 @@
     display:flex;align-items:center;justify-content:space-between;
     padding:26px 28px;border-bottom:1px solid var(--line);
   }
-  .cart-head h3{font-family:'Fraunces',serif;font-size:22px;font-weight:500;}
+  .cart-head h3{font-family:var(--font-serif);font-size:22px;font-weight:500;}
   .cart-close{
     width:34px;height:34px;border-radius:50%;background:var(--white);border:1px solid var(--line);
     display:flex;align-items:center;justify-content:center;cursor:pointer;
   }
   .cart-close svg{width:14px;height:14px;}
-  .cart-items{flex:1;overflow:auto;padding:10px 28px;}
+  .cart-items{flex:1;overflow:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;padding:10px 28px;}
   .cart-empty{padding:60px 0;text-align:center;color:var(--gray);font-size:14px;}
   .cart-empty a{color:var(--green-dark);font-weight:600;border-bottom:1.5px solid var(--green-dark);}
 
@@ -856,7 +862,7 @@
     </div>
     <div class="map-body">
       <div class="modal-eyebrow">Tienda física</div>
-      <h3 id="mapTitle" style="font-family:'Fraunces',serif;font-size:22px;font-weight:500;">C.C. Camoruco - Local 3-12 (Anakel)</h3>
+      <h3 id="mapTitle" style="font-family:var(--font-serif);font-size:22px;font-weight:500;">C.C. Camoruco - Local 3-12 (Anakel)</h3>
       <p>Maracaibo, Venezuela</p>
       <a class="btn btn-block" href="https://www.google.com/maps/search/?api=1&query=Centro+Comercial+Camoruco+Maracaibo+Venezuela" target="_blank" rel="noopener">Cómo llegar en Google Maps</a>
     </div>
@@ -1458,22 +1464,11 @@
   updateHeaderScroll();
 
   /* ====== SCROLL REVEAL ====== */
-  const io = ('IntersectionObserver' in window)
-    ? new IntersectionObserver((entries) => {
-        entries.forEach(e => {
-          if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
-        });
-      }, { threshold: 0.12 })
-    : { observe(){} };
-
-  /* Red de seguridad: si por cualquier motivo el observer no llega a disparar
-     (navegador sin soporte, algún bug de motor de render, etc.), revelamos
-     todo igual pasado un momento para que la información nunca quede oculta. */
-  window.addEventListener('load', () => {
-    setTimeout(() => {
-      document.querySelectorAll('.reveal:not(.in)').forEach(el => el.classList.add('in'));
-    }, 1500);
-  });
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.12 });
 
   /* ====== RENDER GRIDS ====== */
   Object.keys(PRODUCTS).forEach(catKey => {

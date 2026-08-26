@@ -870,6 +870,40 @@
 </div>
 
 <script>
+  /* ====== SCROLL LOCK (iOS-safe) ======
+     iOS Safari no respeta bien overflow:hidden en el body para bloquear el
+     scroll de fondo; hay que fijar el body con position:fixed y restaurar
+     la posición al cerrar. Sin esto, los overlays position:fixed (modal,
+     carrito, menú, mapa) se "desprendían" de la pantalla cuando la barra
+     de direcciones de Safari se colapsaba/expandía durante el scroll,
+     dejando el contenido del modal cortado o mal ubicado. */
+  let overlayLockCount = 0;
+  let scrollLockY = 0;
+  function lockScroll(){
+    if(overlayLockCount === 0){
+      scrollLockY = window.scrollY || window.pageYOffset || document.documentElement.scrollTop || 0;
+      document.body.style.position = 'fixed';
+      document.body.style.top = (-scrollLockY) + 'px';
+      document.body.style.left = '0';
+      document.body.style.right = '0';
+      document.body.style.width = '100%';
+      document.body.classList.add('locked');
+    }
+    overlayLockCount++;
+  }
+  function unlockScroll(){
+    overlayLockCount = Math.max(0, overlayLockCount - 1);
+    if(overlayLockCount === 0){
+      document.body.classList.remove('locked');
+      document.body.style.position = '';
+      document.body.style.top = '';
+      document.body.style.left = '';
+      document.body.style.right = '';
+      document.body.style.width = '';
+      window.scrollTo(0, scrollLockY);
+    }
+  }
+
   /* ====== FOCUS TRAP (accesibilidad de teclado en overlays) ====== */
   let lastFocused = null;
   function trapFocus(container){
@@ -900,11 +934,13 @@
 
   /* ====== LOCATION MODAL ====== */
   function openMap(){
+    lockScroll();
     document.body.classList.add('map-open');
     trapFocus(document.querySelector('.map-panel'));
   }
   function closeMap(){
     document.body.classList.remove('map-open');
+    unlockScroll();
     releaseFocus(document.querySelector('.map-panel'));
   }
   document.getElementById('mapClose').addEventListener('click', closeMap);
@@ -1654,11 +1690,13 @@
 
   /* ====== CART DRAWER OPEN/CLOSE ====== */
   function openCart(){
+    lockScroll();
     document.body.classList.add('cart-open');
     trapFocus(document.getElementById('cartDrawer'));
   }
   function closeCart(){
     document.body.classList.remove('cart-open');
+    unlockScroll();
     releaseFocus(document.getElementById('cartDrawer'));
   }
   document.getElementById('cartToggle').addEventListener('click', openCart);
@@ -1726,6 +1764,7 @@
     });
 
     document.body.classList.add('modal-open');
+    lockScroll();
     const panelEl = document.querySelector('.modal-panel');
     if(panelEl) panelEl.scrollTop = 0;
     trapFocus(panelEl);
@@ -1795,6 +1834,7 @@
   modalScrim.addEventListener('click', (e) => { if(e.target === modalScrim) closeModal(); });
   function closeModal(){
     document.body.classList.remove('modal-open');
+    unlockScroll();
     releaseFocus(document.querySelector('.modal-panel'));
   }
 
@@ -1804,6 +1844,7 @@
   const menuOverlayEl = document.getElementById('menuOverlay');
   function closeMenu(){
     document.body.classList.remove('menu-open');
+    unlockScroll();
     menuToggle.setAttribute('aria-expanded','false');
     menuLabel.textContent = 'Menú';
     releaseFocus(menuOverlayEl);
@@ -1812,8 +1853,8 @@
     const open = document.body.classList.toggle('menu-open');
     menuToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
     menuLabel.textContent = open ? 'Cerrar' : 'Menú';
-    if(open) trapFocus(menuOverlayEl);
-    else releaseFocus(menuOverlayEl);
+    if(open){ lockScroll(); trapFocus(menuOverlayEl); }
+    else { unlockScroll(); releaseFocus(menuOverlayEl); }
   });
   document.querySelectorAll('.menu-link').forEach(a => {
     a.addEventListener('click', closeMenu);

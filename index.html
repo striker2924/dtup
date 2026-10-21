@@ -204,6 +204,66 @@
   }
   .menu-foot a:hover{border-color:var(--green-dark);color:var(--green-dark);}
 
+  /* ---------- buscador ---------- */
+  .search-overlay{
+    position:fixed;inset:0;z-index:150;
+    background:var(--cream);
+    padding:112px 48px 32px;overflow-y:auto;-webkit-overflow-scrolling:touch;
+    opacity:0;visibility:hidden;transform:translateY(-14px);
+    transition:opacity .35s cubic-bezier(.16,.8,.24,1), transform .35s cubic-bezier(.16,.8,.24,1), visibility 0s linear .35s;
+  }
+  body.search-open .search-overlay{
+    opacity:1;visibility:visible;transform:translateY(0);
+    transition:opacity .35s cubic-bezier(.16,.8,.24,1), transform .35s cubic-bezier(.16,.8,.24,1), visibility 0s linear 0s;
+  }
+  .search-inner{max-width:720px;margin:0 auto;}
+  .search-box{position:relative;}
+  .search-box > svg{position:absolute;left:16px;top:50%;transform:translateY(-50%);width:19px;height:19px;color:var(--gray);pointer-events:none;}
+  .search-input{
+    width:100%;font-family:var(--font-sans);font-size:17px;color:var(--black);
+    padding:15px 46px 15px 46px;background:#fff;
+    border:1.5px solid var(--gray-light);border-radius:12px;outline:none;
+    -webkit-appearance:none;appearance:none;
+    transition:border-color .2s ease, box-shadow .2s ease;
+  }
+  .search-input::placeholder{color:var(--gray);opacity:.75;}
+  .search-input:focus{border-color:var(--green-dark);box-shadow:0 0 0 3px var(--green-tint);}
+  .search-input::-webkit-search-cancel-button{display:none;}
+  .search-clear{
+    position:absolute;right:8px;top:50%;transform:translateY(-50%);
+    width:34px;height:34px;border:none;background:none;cursor:pointer;color:var(--gray);
+    display:none;align-items:center;justify-content:center;border-radius:50%;
+  }
+  .search-clear:hover{color:var(--black);}
+  .search-clear svg{width:16px;height:16px;}
+  .search-box.has-value .search-clear{display:flex;}
+  .search-chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px;}
+  .search-chip{
+    font-family:var(--font-sans);font-size:13px;font-weight:600;color:var(--black);
+    background:none;border:1.5px solid var(--gray-light);border-radius:999px;
+    padding:7px 14px;cursor:pointer;transition:border-color .2s ease,color .2s ease,background .2s ease;
+  }
+  .search-chip:hover{border-color:var(--green-dark);color:var(--green-dark);}
+  .search-meta{margin:22px 0 6px;font-size:12.5px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--gray);}
+  .search-results{display:flex;flex-direction:column;}
+  .sr-item{
+    display:flex;align-items:center;gap:14px;width:100%;
+    background:none;border:none;border-bottom:1px solid rgba(14,14,12,.09);
+    padding:10px 4px;text-align:left;cursor:pointer;font-family:var(--font-sans);color:var(--black);
+  }
+  .sr-item:hover,.sr-item:focus-visible{background:rgba(78,184,135,.10);outline:none;}
+  .sr-thumb{width:52px;height:64px;flex-shrink:0;border-radius:8px;background:#fff;overflow:hidden;display:flex;align-items:center;justify-content:center;}
+  .sr-thumb img{width:100%;height:100%;object-fit:cover;display:block;}
+  .sr-thumb svg{width:55%;height:55%;color:var(--gray-light);}
+  .sr-info{min-width:0;flex:1;}
+  .sr-name{font-size:14.5px;font-weight:500;line-height:1.3;}
+  .sr-sub{font-size:12.5px;color:var(--gray);margin-top:3px;}
+  .sr-price{font-size:14px;font-weight:600;flex-shrink:0;}
+  .sr-sold{color:#9A3B2E;font-weight:600;}
+  .search-empty{padding:34px 0;text-align:center;color:var(--gray);font-size:14.5px;line-height:1.6;}
+  .search-empty a{color:var(--green-dark);font-weight:600;border-bottom:1.5px solid var(--green-dark);}
+  @media (max-width: 880px){ .search-overlay{padding:100px 24px 24px;} }
+
   /* ---------- buttons ---------- */
   .btn{
     display:inline-flex;align-items:center;justify-content:center;gap:9px;
@@ -606,6 +666,9 @@
     <img class="logo" src="images/logo.png" alt="Dtup">
     <span class="nav-mid">Ropa de hombre · Maracaibo</span>
     <div class="nav-right">
+      <button class="icon-btn" id="searchToggle" aria-label="Buscar" aria-expanded="false" aria-controls="searchOverlay">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/></svg>
+      </button>
       <button class="icon-btn" id="cartToggle" aria-label="Carrito">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6h15l-1.5 9h-12L6 3H3"/><circle cx="9.5" cy="20" r="1.4" fill="currentColor" stroke="none"/><circle cx="17.5" cy="20" r="1.4" fill="currentColor" stroke="none"/></svg>
         <span class="badge" id="cartBadge">0</span>
@@ -617,6 +680,19 @@
     </div>
   </nav>
 </header>
+
+<div class="search-overlay" id="searchOverlay" role="dialog" aria-modal="true" aria-label="Buscar productos">
+  <div class="search-inner">
+    <div class="search-box" id="searchBox">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/></svg>
+      <input type="search" id="searchInput" class="search-input" placeholder="Buscar franelas, polos, hoodies…" autocomplete="off" autocapitalize="off" spellcheck="false" enterkeyhint="search" aria-label="Buscar productos">
+      <button type="button" class="search-clear" id="searchClear" aria-label="Borrar búsqueda"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    </div>
+    <div class="search-chips" id="searchChips"></div>
+    <div class="search-meta" id="searchMeta" aria-live="polite"></div>
+    <div class="search-results" id="searchResults"></div>
+  </div>
+</div>
 
 <div class="menu-overlay" id="menuOverlay" role="dialog" aria-modal="true" aria-label="Menú de navegación">
   <nav class="menu-list">
@@ -1716,6 +1792,7 @@
 
   /* ====== CART DRAWER OPEN/CLOSE ====== */
   function openCart(){
+    closeSearch();
     lockScroll();
     document.body.classList.add('cart-open');
     trapFocus(document.getElementById('cartDrawer'));
@@ -1864,6 +1941,115 @@
     releaseFocus(document.querySelector('.modal-panel'));
   }
 
+  /* ====== BUSCADOR ====== */
+  const searchToggle = document.getElementById('searchToggle');
+  const searchOverlayEl = document.getElementById('searchOverlay');
+  const searchInput = document.getElementById('searchInput');
+  const searchBox = document.getElementById('searchBox');
+  const searchClear = document.getElementById('searchClear');
+  const searchChips = document.getElementById('searchChips');
+  const searchMeta = document.getElementById('searchMeta');
+  const searchResults = document.getElementById('searchResults');
+
+  const normTxt = (t) => String(t).toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+  const compactTxt = (t) => normTxt(t).replace(/[^a-z0-9]/g, '');
+  const CAT_WORDS = {
+    franelas: 'franela franelas camiseta camisetas playera playeras tee t-shirt',
+    polos: 'polo polos',
+    camisas: 'camisa camisas',
+    hoodies: 'hoodie hoodies sudadera sudaderas capucha chaqueta chaquetas',
+    pantalones: 'pantalon pantalones jogger cargo',
+    bermudas: 'bermuda bermudas short shorts'
+  };
+  const SEARCH_ORDER = ['franelas','polos','camisas','hoodies','pantalones','bermudas'];
+  const SEARCH_INDEX = [];
+  SEARCH_ORDER.concat(Object.keys(PRODUCTS).filter(k => SEARCH_ORDER.indexOf(k) < 0)).forEach(catKey => {
+    const cat = PRODUCTS[catKey]; if(!cat) return;
+    cat.items.forEach(item => {
+      const hay = normTxt(cat.label + ' ' + (CAT_WORDS[catKey] || catKey) + ' ' + item.name + ' $' + item.price);
+      SEARCH_INDEX.push({ catKey, cat, item, hay, hayC: hay.replace(/[^a-z0-9]/g, '') });
+    });
+  });
+
+  function escHTML(t){ return String(t).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
+
+  function renderSearch(){
+    const raw = searchInput.value.trim();
+    searchBox.classList.toggle('has-value', searchInput.value.length > 0);
+    if(!raw){
+      searchMeta.textContent = '';
+      searchResults.innerHTML = '';
+      searchChips.style.display = '';
+      return;
+    }
+    searchChips.style.display = 'none';
+    const tokens = normTxt(raw).split(/\s+/).filter(Boolean);
+    const found = SEARCH_INDEX.filter(e => tokens.every(tk => {
+      const c = tk.replace(/[^a-z0-9]/g, '');
+      return e.hay.indexOf(tk) >= 0 || (c && e.hayC.indexOf(c) >= 0);
+    }));
+    if(!found.length){
+      searchMeta.textContent = '';
+      searchResults.innerHTML = '<div class="search-empty">No encontramos resultados para “' + escHTML(raw) + '”.<br>Prueba con otra palabra o <a href="' + waLink('Hola, estoy buscando: ' + raw) + '" target="_blank" rel="noopener">pregúntanos por WhatsApp</a>.</div>';
+      return;
+    }
+    searchMeta.textContent = found.length + (found.length === 1 ? ' resultado' : ' resultados');
+    searchResults.innerHTML = '';
+    found.forEach(e => {
+      const inStock = hasStock(e.item);
+      const onOffer = typeof e.item.salePrice === 'number';
+      const price = '$' + (onOffer ? e.item.salePrice : e.item.price).toFixed(2);
+      const thumb = e.item.images ? '<img src="' + e.item.images[0] + '" alt="" loading="lazy">' : ICONS[e.cat.icon];
+      const sizes = e.item.sizes.filter(s => s.available).map(s => s.size).join(' · ');
+      const b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'sr-item';
+      b.innerHTML =
+        '<span class="sr-thumb">' + thumb + '</span>' +
+        '<span class="sr-info"><div class="sr-name">' + escHTML(e.item.name) + '</div>' +
+        '<div class="sr-sub">' + escHTML(e.cat.label) + (inStock ? (sizes ? ' · Tallas ' + sizes : '') : ' · <span class="sr-sold">Agotado</span>') + '</div></span>' +
+        '<span class="sr-price">' + price + '</span>';
+      b.addEventListener('click', () => { closeSearch(); openModal(e.catKey, e.item); });
+      searchResults.appendChild(b);
+    });
+  }
+
+  SEARCH_ORDER.forEach(k => {
+    if(!PRODUCTS[k]) return;
+    const chip = document.createElement('button');
+    chip.type = 'button';
+    chip.className = 'search-chip';
+    const CHIP = { franelas:['Franelas','franela'], polos:['Polos','polo'], camisas:['Camisas','camisa'], hoodies:['Hoodies','hoodie'], pantalones:['Pantalones','pantalon'], bermudas:['Shorts','short'] };
+    const cd = CHIP[k] || [PRODUCTS[k].label, PRODUCTS[k].label];
+    chip.textContent = cd[0];
+    chip.addEventListener('click', () => { searchInput.value = cd[1]; renderSearch(); searchInput.focus(); });
+    searchChips.appendChild(chip);
+  });
+
+  function closeSearch(){
+    if(!document.body.classList.contains('search-open')) return;
+    document.body.classList.remove('search-open');
+    searchToggle.setAttribute('aria-expanded', 'false');
+    unlockScroll();
+    releaseFocus(searchOverlayEl);
+  }
+  function openSearch(){
+    closeMenu();
+    document.body.classList.add('search-open');
+    searchToggle.setAttribute('aria-expanded', 'true');
+    lockScroll();
+    trapFocus(searchOverlayEl);
+    renderSearch();
+  }
+  searchToggle.addEventListener('click', () => {
+    if(document.body.classList.contains('search-open')) closeSearch(); else openSearch();
+  });
+  searchInput.addEventListener('input', renderSearch);
+  searchInput.addEventListener('keydown', (e) => {
+    if(e.key === 'Enter'){ e.preventDefault(); const f = searchResults.querySelector('.sr-item'); if(f) f.click(); }
+  });
+  searchClear.addEventListener('click', () => { searchInput.value = ''; renderSearch(); searchInput.focus(); });
+
   /* ====== MENU ====== */
   const menuToggle = document.getElementById('menuToggle');
   const menuLabel = document.getElementById('menuLabel');
@@ -1876,6 +2062,7 @@
     releaseFocus(menuOverlayEl);
   }
   menuToggle.addEventListener('click', () => {
+    closeSearch();
     const open = document.body.classList.toggle('menu-open');
     menuToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
     menuLabel.textContent = open ? 'Cerrar' : 'Menú';
@@ -1888,7 +2075,7 @@
 
   document.addEventListener('keydown', (e) => {
     if(e.key === 'Escape'){
-      closeModal(); closeCart(); closeMap(); closeMenu();
+      closeModal(); closeCart(); closeMap(); closeMenu(); closeSearch();
     }
     if(document.body.classList.contains('modal-open')){
       if(e.key === 'ArrowLeft') stepModalImage(-1);

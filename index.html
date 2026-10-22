@@ -1385,36 +1385,45 @@
       /* ====== BOTÓN «CÓMO LLEGAR» ====== */
       .visit-cta {
         background: var(--cream);
-        padding: 26px 0;
+        padding: 56px 0 48px;
         text-align: center;
+      }
+      .visit-logo {
+        display: block;
+        width: 130px;
+        height: auto;
+        margin: 0 auto 22px;
       }
       .pill-cta {
         display: inline-flex;
         align-items: center;
         gap: 11px;
-        background: var(--white);
-        border: 1.5px solid var(--line);
+        background: var(--green);
+        border: 1.5px solid var(--green);
         border-radius: 100px;
-        padding: 15px 30px;
+        padding: 16px 38px;
         font-family: inherit;
-        font-size: 15px;
-        font-weight: 600;
-        color: var(--black);
+        font-size: 16px;
+        font-weight: 700;
+        letter-spacing: 0.02em;
+        color: #08120d;
         cursor: pointer;
+        box-shadow: 0 10px 24px rgba(78, 184, 135, 0.35);
         transition:
-          border-color 0.25s ease,
           background 0.25s ease,
-          transform 0.25s ease;
+          transform 0.25s ease,
+          box-shadow 0.25s ease;
       }
       .pill-cta:hover {
+        background: var(--green-dark);
         border-color: var(--green-dark);
-        background: var(--green-tint);
-        transform: translateY(-1px);
+        transform: translateY(-2px);
+        box-shadow: 0 14px 28px rgba(78, 184, 135, 0.4);
       }
       .pill-cta svg {
         width: 18px;
         height: 18px;
-        color: var(--green-dark);
+        color: #08120d;
         flex-shrink: 0;
       }
 
@@ -2354,13 +2363,24 @@
       </div>
 
       <div class="visit-cta">
-        <button class="pill-cta" onclick="openMap()">
-          <svg viewBox="0 0 24 24" fill="currentColor">
+        <img
+          class="visit-logo"
+          src="images/logo.png"
+          alt=""
+          width="240"
+          height="183"
+        />
+        <button
+          class="pill-cta"
+          onclick="openMap()"
+          aria-label="Visítanos: ver cómo llegar a la tienda"
+        >
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
             <path
               d="M12 2C7.86 2 4.5 5.36 4.5 9.5c0 5.5 6.5 11.5 7 12 .5-.5 7-6.5 7-12C18.5 5.36 15.14 2 12 2zm0 10.2a2.7 2.7 0 1 1 0-5.4 2.7 2.7 0 0 1 0 5.4z"
             />
           </svg>
-          Cómo llegar a la tienda
+          Visítanos
         </button>
       </div>
 

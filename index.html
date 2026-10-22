@@ -10,8 +10,14 @@
   <head>
     <!-- Básico -->
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-    <meta name="format-detection" content="telephone=no, address=no, email=no, date=no" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
+    <meta
+      name="format-detection"
+      content="telephone=no, address=no, email=no, date=no"
+    />
     <meta name="theme-color" content="#F6F1E7" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="mobile-web-app-capable" content="yes" />
@@ -25,11 +31,35 @@
 
     <!-- Íconos (favicon, pestaña, iPhone). El "?v=3" fuerza a los navegadores a refrescar la caché. -->
     <link rel="icon" href="images/favicon.ico?v=3" sizes="any" />
-    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png?v=3" />
-    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16.png?v=3" />
-    <link rel="icon" type="image/png" sizes="192x192" href="images/favicon-192.png?v=3" />
-    <link rel="icon" type="image/png" sizes="512x512" href="images/favicon-512.png?v=3" />
-    <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png?v=3" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="images/favicon-32.png?v=3"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="images/favicon-16.png?v=3"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="192x192"
+      href="images/favicon-192.png?v=3"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="512x512"
+      href="images/favicon-512.png?v=3"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="images/apple-touch-icon.png?v=3"
+    />
 
     <!-- Vista previa al compartir el enlace (WhatsApp, Instagram, redes) -->
     <meta property="og:title" content="Dtup — Ropa de hombre" />
@@ -39,7 +69,10 @@
     />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://dtup.shop/" />
-    <meta property="og:image" content="https://dtup.shop/images/og-image.jpg?v=3" />
+    <meta
+      property="og:image"
+      content="https://dtup.shop/images/og-image.jpg?v=3"
+    />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta name="twitter:card" content="summary_large_image" />
@@ -53,8 +86,10 @@
      carga instantánea en iOS, Android, Windows y macOS por igual. */
       :root {
         --font-sans:
-          -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-        --font-serif: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+          -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          "Helvetica Neue", Arial, sans-serif;
+        --font-serif:
+          ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
         --cream: #f6f1e7;
         --cream2: #ede4d3;
         --white: #ffffff;
@@ -682,7 +717,11 @@
         width: 620px;
         height: 620px;
         border-radius: 50%;
-        background: radial-gradient(circle at 40% 40%, rgba(78, 184, 135, 0.35), rgba(78, 184, 135, 0) 70%);
+        background: radial-gradient(
+          circle at 40% 40%,
+          rgba(78, 184, 135, 0.35),
+          rgba(78, 184, 135, 0) 70%
+        );
         pointer-events: none;
       }
       .hero .eyebrow {
@@ -1105,7 +1144,11 @@
         width: 760px;
         height: 760px;
         border-radius: 50%;
-        background: radial-gradient(circle, rgba(78, 184, 135, 0.28), rgba(78, 184, 135, 0) 70%);
+        background: radial-gradient(
+          circle,
+          rgba(78, 184, 135, 0.28),
+          rgba(78, 184, 135, 0) 70%
+        );
         pointer-events: none;
       }
       .cta .wrap {
@@ -1830,6 +1873,281 @@
       .cart-subtotal strong {
         font-size: 16px;
       }
+
+      /* ====== FILTRO POR TALLA (uno por sección) ====== */
+      .size-filter {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 10px 14px;
+        margin: -16px 0 32px;
+      }
+      .filter-label {
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--gray);
+      }
+      .category.on-dark .filter-label,
+      .category.on-dark .filter-count {
+        color: #b9c9bf;
+      }
+      .filter-chips {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+      .filter-chip {
+        min-width: 52px;
+        height: 40px;
+        padding: 0 16px;
+        border: 1.5px solid var(--gray-light);
+        border-radius: 999px;
+        background: none;
+        font-family: inherit;
+        font-size: 13px;
+        font-weight: 600;
+        color: var(--black);
+        cursor: pointer;
+        transition:
+          border-color 0.2s ease,
+          background 0.2s ease,
+          color 0.2s ease;
+      }
+      .filter-chip:hover {
+        border-color: var(--black);
+      }
+      .filter-chip.active {
+        background: var(--black);
+        border-color: var(--black);
+        color: var(--white);
+      }
+      .category.on-dark .filter-chip {
+        border-color: rgba(255, 255, 255, 0.3);
+        color: var(--offwhite);
+      }
+      .category.on-dark .filter-chip:hover {
+        border-color: var(--offwhite);
+      }
+      .category.on-dark .filter-chip.active {
+        background: var(--offwhite);
+        border-color: var(--offwhite);
+        color: var(--black);
+      }
+      .filter-count {
+        margin-left: auto;
+        font-size: 13px;
+        color: var(--gray);
+      }
+      @media (max-width: 640px) {
+        .filter-count {
+          margin-left: 0;
+          width: 100%;
+        }
+      }
+      .product-card.filtered-out {
+        display: none;
+      }
+      .filter-empty {
+        display: none;
+        padding: 40px 0 10px;
+        text-align: center;
+        font-size: 15px;
+        line-height: 1.7;
+        opacity: 0.8;
+      }
+      .filter-empty.show {
+        display: block;
+      }
+      .filter-empty button {
+        font: inherit;
+        font-weight: 600;
+        color: inherit;
+        background: none;
+        border: none;
+        text-decoration: underline;
+        cursor: pointer;
+      }
+
+      /* ====== ETIQUETA «NUEVO» ====== */
+      .new-tag {
+        position: absolute;
+        top: 12px;
+        right: 12px;
+        z-index: 2;
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: var(--white);
+        background: var(--black);
+        padding: 4px 8px;
+        border-radius: 4px;
+      }
+      .offer-tag + .new-tag {
+        top: 40px;
+      }
+
+      /* ====== FICHA: AVISO DE ÚLTIMA TALLA Y ACCIONES ====== */
+      .stock-note {
+        margin: -4px 0 20px;
+        font-size: 12.5px;
+        font-weight: 600;
+        color: var(--green-dark);
+      }
+      .modal-links {
+        display: flex;
+        gap: 10px;
+        margin-top: 16px;
+      }
+      .modal-links .link-btn {
+        flex: 1;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        height: 42px;
+        padding: 0 12px;
+        border: 1.5px solid var(--line);
+        border-radius: 999px;
+        background: none;
+        font-family: inherit;
+        font-size: 13px;
+        font-weight: 600;
+        color: var(--black);
+        text-decoration: none;
+        cursor: pointer;
+        transition: border-color 0.2s ease;
+      }
+      .modal-links .link-btn:hover {
+        border-color: var(--black);
+      }
+      .modal-links svg {
+        width: 16px;
+        height: 16px;
+        flex: none;
+      }
+
+      /* ====== BOTÓN FLOTANTE DE WHATSAPP ====== */
+      .wa-fab {
+        position: fixed;
+        right: 18px;
+        bottom: calc(18px + env(safe-area-inset-bottom, 0px));
+        z-index: 120;
+        width: 56px;
+        height: 56px;
+        border-radius: 50%;
+        background: #25d366;
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 8px 24px rgba(14, 14, 12, 0.28);
+        opacity: 0;
+        transform: translateY(12px) scale(0.9);
+        pointer-events: none;
+        transition:
+          opacity 0.3s ease,
+          transform 0.3s ease;
+      }
+      .wa-fab.show {
+        opacity: 1;
+        transform: none;
+        pointer-events: auto;
+      }
+      .wa-fab svg {
+        width: 30px;
+        height: 30px;
+      }
+      body.menu-open .wa-fab,
+      body.search-open .wa-fab,
+      body.modal-open .wa-fab,
+      body.cart-open .wa-fab,
+      body.map-open .wa-fab {
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      /* ====== DATOS DEL PEDIDO (en el carrito) ====== */
+      .cart-foot {
+        max-height: 64vh;
+        overflow-y: auto;
+      }
+      .order-form {
+        display: grid;
+        gap: 10px;
+        margin: 14px 0 16px;
+      }
+      .order-form input[type="text"],
+      .order-form select {
+        width: 100%;
+        height: 44px;
+        padding: 0 14px;
+        border: 1.5px solid var(--line);
+        border-radius: 8px;
+        background: var(--white);
+        font-family: inherit;
+        font-size: 16px;
+        color: var(--black);
+      }
+      .order-form input:focus,
+      .order-form select:focus {
+        outline: none;
+        border-color: var(--black);
+      }
+      .order-form .invalid {
+        border-color: #c0392b;
+      }
+      .seg {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+      }
+      .seg label {
+        cursor: pointer;
+      }
+      .seg input {
+        position: absolute;
+        opacity: 0;
+        pointer-events: none;
+      }
+      .seg span {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 44px;
+        border: 1.5px solid var(--line);
+        border-radius: 8px;
+        background: var(--white);
+        font-size: 13px;
+        font-weight: 600;
+      }
+      .seg input:checked + span {
+        background: var(--black);
+        border-color: var(--black);
+        color: var(--white);
+      }
+      .seg input:focus-visible + span {
+        outline: 2px solid var(--green-dark);
+        outline-offset: 2px;
+      }
+      .order-error {
+        display: none;
+        margin-bottom: 10px;
+        font-size: 12.5px;
+        font-weight: 600;
+        color: #c0392b;
+      }
+      .order-error.show {
+        display: block;
+      }
+      .order-note {
+        margin-top: 10px;
+        font-size: 11.5px;
+        color: var(--gray);
+        text-align: center;
+      }
     </style>
   </head>
   <body>
@@ -1838,7 +2156,11 @@
 
     <header>
       <nav class="nav wrap">
-        <a href="./" class="logo-link" id="logoHome" aria-label="Dtup — ir al inicio"
+        <a
+          href="./"
+          class="logo-link"
+          id="logoHome"
+          aria-label="Dtup — ir al inicio"
           ><img class="logo" src="images/logo.png" alt="Dtup"
         /></a>
         <span class="nav-mid">Ropa de hombre · Maracaibo</span>
@@ -1872,12 +2194,29 @@
               stroke-linejoin="round"
             >
               <path d="M6 6h15l-1.5 9h-12L6 3H3" />
-              <circle cx="9.5" cy="20" r="1.4" fill="currentColor" stroke="none" />
-              <circle cx="17.5" cy="20" r="1.4" fill="currentColor" stroke="none" />
+              <circle
+                cx="9.5"
+                cy="20"
+                r="1.4"
+                fill="currentColor"
+                stroke="none"
+              />
+              <circle
+                cx="17.5"
+                cy="20"
+                r="1.4"
+                fill="currentColor"
+                stroke="none"
+              />
             </svg>
             <span class="badge" id="cartBadge">0</span>
           </button>
-          <button class="menu-btn icon-btn" id="menuToggle" aria-expanded="false" aria-controls="menuOverlay">
+          <button
+            class="menu-btn icon-btn"
+            id="menuToggle"
+            aria-expanded="false"
+            aria-controls="menuOverlay"
+          >
             <span class="bars"><span></span><span></span><span></span></span>
             <span id="menuLabel">Menú</span>
           </button>
@@ -1916,7 +2255,12 @@
             enterkeyhint="search"
             aria-label="Buscar productos"
           />
-          <button type="button" class="search-clear" id="searchClear" aria-label="Borrar búsqueda">
+          <button
+            type="button"
+            class="search-clear"
+            id="searchClear"
+            aria-label="Borrar búsqueda"
+          >
             <svg
               viewBox="0 0 24 24"
               fill="none"
@@ -1942,16 +2286,31 @@
       aria-label="Menú de navegación"
     >
       <nav class="menu-list">
-        <a href="#franelas" class="menu-link"><span class="mn">01</span>Franelas</a>
+        <a href="#franelas" class="menu-link"
+          ><span class="mn">01</span>Franelas</a
+        >
         <a href="#polos" class="menu-link"><span class="mn">02</span>Polos</a>
-        <a href="#camisas" class="menu-link"><span class="mn">03</span>Camisas</a>
-        <a href="#hoodies" class="menu-link"><span class="mn">04</span>Hoodies</a>
-        <a href="#pantalones" class="menu-link"><span class="mn">05</span>Pantalones</a>
-        <a href="#bermudas" class="menu-link"><span class="mn">06</span>Bermudas y Shorts</a>
+        <a href="#camisas" class="menu-link"
+          ><span class="mn">03</span>Camisas</a
+        >
+        <a href="#hoodies" class="menu-link"
+          ><span class="mn">04</span>Hoodies</a
+        >
+        <a href="#pantalones" class="menu-link"
+          ><span class="mn">05</span>Pantalones</a
+        >
+        <a href="#bermudas" class="menu-link"
+          ><span class="mn">06</span>Bermudas y Shorts</a
+        >
       </nav>
       <div class="menu-foot">
-        <a href="#" id="menuWhatsapp" target="_blank" rel="noopener">Escribir por WhatsApp</a>
-        <a href="https://www.instagram.com/dtup.mcbo/" target="_blank" rel="noopener"
+        <a href="#" id="menuWhatsapp" target="_blank" rel="noopener"
+          >Escribir por WhatsApp</a
+        >
+        <a
+          href="https://www.instagram.com/dtup.mcbo/"
+          target="_blank"
+          rel="noopener"
           >Instagram · @dtup.mcbo</a
         >
       </div>
@@ -1960,16 +2319,24 @@
     <main id="main-content">
       <section class="hero">
         <div class="wrap">
-          <div class="eyebrow reveal"><span class="dot"></span>Dtup · Ropa de hombre</div>
+          <div class="eyebrow reveal">
+            <span class="dot"></span>Dtup · Ropa de hombre
+          </div>
           <h1 class="reveal">Piezas que se<br />notan <em>de lejos.</em></h1>
           <div class="hero-sub reveal">
             <p>
-              Franelas, pantalones y hoodies pensados para el día a día, con corte y caída que no pasan
-              desapercibidos. Catálogo actualizado y tienda física en Maracaibo.
+              Franelas, pantalones y hoodies pensados para el día a día, con
+              corte y caída que no pasan desapercibidos. Catálogo actualizado y
+              tienda física en Maracaibo.
             </p>
             <div class="hero-actions">
               <a class="btn" href="#franelas">Ver catálogo</a>
-              <a class="btn btn-outline" id="heroWhatsapp" href="#" target="_blank" rel="noopener"
+              <a
+                class="btn btn-outline"
+                id="heroWhatsapp"
+                href="#"
+                target="_blank"
+                rel="noopener"
                 >Escribir por WhatsApp</a
               >
             </div>
@@ -2079,18 +2446,27 @@
             <div class="feat-card reveal">
               <div class="num">01</div>
               <h4>Envíos a nivel nacional</h4>
-              <p>Pides por WhatsApp y te llega a la puerta, en cualquier parte del país.</p>
+              <p>
+                Pides por WhatsApp y te llega a la puerta, en cualquier parte
+                del país.
+              </p>
             </div>
             <button class="feat-card reveal" type="button" onclick="openMap()">
               <div class="num">02</div>
               <h4>Tienda física</h4>
-              <p>C.C. Camoruco - Local 3-12 (Anakel) — abierta para que conozcas cada pieza de cerca.</p>
+              <p>
+                C.C. Camoruco - Local 3-12 (Anakel) — abierta para que conozcas
+                cada pieza de cerca.
+              </p>
               <span class="feat-link">Ver ubicación en el mapa →</span>
             </button>
             <div class="feat-card reveal">
               <div class="num">03</div>
               <h4>Atención directa</h4>
-              <p>Atendemos personalmente, garantizando cada pedido de principio a fin.</p>
+              <p>
+                Atendemos personalmente, garantizando cada pedido de principio a
+                fin.
+              </p>
             </div>
           </div>
         </div>
@@ -2098,10 +2474,18 @@
 
       <section class="cta on-dark">
         <div class="wrap">
-          <div class="eyebrow"><span class="dot"></span>Envíos a nivel nacional</div>
+          <div class="eyebrow">
+            <span class="dot"></span>Envíos a nivel nacional
+          </div>
           <h2 class="reveal">¿Buscas tu próxima pieza favorita?</h2>
           <div class="cta-actions reveal">
-            <a class="btn" id="ctaWhatsapp" href="#" target="_blank" rel="noopener">
+            <a
+              class="btn"
+              id="ctaWhatsapp"
+              href="#"
+              target="_blank"
+              rel="noopener"
+            >
               <svg viewBox="0 0 24 24" fill="currentColor">
                 <path
                   d="M17.47 14.38c-.3-.15-1.77-.87-2.04-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.48-1.76-1.66-2.06-.17-.3-.02-.46.13-.61.14-.14.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.6-.91-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.47 0 1.46 1.07 2.87 1.22 3.07.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.62.71.23 1.35.2 1.86.12.57-.08 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.42-.07-.13-.27-.2-.57-.35z"
@@ -2112,7 +2496,9 @@
               </svg>
               Escribir por WhatsApp
             </a>
-            <a class="btn btn-outline" href="#franelas">Ver catálogo completo</a>
+            <a class="btn btn-outline" href="#franelas"
+              >Ver catálogo completo</a
+            >
           </div>
         </div>
       </section>
@@ -2140,8 +2526,13 @@
           </div>
           <div class="foot-col">
             <div class="foot-h">Contacto</div>
-            <a href="#" id="footWhatsapp" target="_blank" rel="noopener">WhatsApp</a>
-            <a href="https://www.instagram.com/dtup.mcbo/" target="_blank" rel="noopener"
+            <a href="#" id="footWhatsapp" target="_blank" rel="noopener"
+              >WhatsApp</a
+            >
+            <a
+              href="https://www.instagram.com/dtup.mcbo/"
+              target="_blank"
+              rel="noopener"
               >Instagram · @dtup.mcbo</a
             >
           </div>
@@ -2155,10 +2546,21 @@
 
     <!-- ===== PRODUCT MODAL ===== -->
     <div class="modal-scrim" id="modalScrim">
-      <div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="modalName">
+      <div
+        class="modal-panel"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="modalName"
+      >
         <div class="modal-media">
           <button class="modal-close" id="modalClose" aria-label="Cerrar">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#0E0E0C" stroke-width="2" stroke-linecap="round">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="#0E0E0C"
+              stroke-width="2"
+              stroke-linecap="round"
+            >
               <path d="M6 6l12 12M18 6L6 18" />
             </svg>
           </button>
@@ -2205,6 +2607,7 @@
           <div class="modal-price" id="modalPrice"></div>
           <div class="modal-label">Talla</div>
           <div class="size-row" id="modalSizes"></div>
+          <div class="stock-note" id="modalStock"></div>
           <div class="modal-label">Cantidad</div>
           <div class="qty-row">
             <div class="qty-stepper">
@@ -2214,8 +2617,39 @@
             </div>
           </div>
           <div class="modal-actions">
-            <button class="btn btn-block" id="modalAdd" type="button">Agregar al carrito</button>
+            <button class="btn btn-block" id="modalAdd" type="button">
+              Agregar al carrito
+            </button>
             <p>Se suma al carrito — el pedido se envía por WhatsApp al final</p>
+            <div class="modal-links">
+              <button class="link-btn" id="modalShare" type="button">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M10 14a4 4 0 0 0 5.66 0l3-3a4 4 0 0 0-5.66-5.66l-1 1"
+                  />
+                  <path
+                    d="M14 10a4 4 0 0 0-5.66 0l-3 3a4 4 0 0 0 5.66 5.66l1-1"
+                  />
+                </svg>
+                <span id="modalShareLabel">Copiar enlace</span>
+              </button>
+              <a
+                class="link-btn"
+                id="modalAsk"
+                href="#"
+                target="_blank"
+                rel="noopener"
+                >Preguntar por WhatsApp</a
+              >
+            </div>
           </div>
         </div>
       </div>
@@ -2223,30 +2657,112 @@
 
     <!-- ===== CART DRAWER ===== -->
     <div class="cart-scrim" id="cartScrim"></div>
-    <aside class="cart-drawer" id="cartDrawer" role="dialog" aria-modal="true" aria-labelledby="cartTitle">
+    <aside
+      class="cart-drawer"
+      id="cartDrawer"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="cartTitle"
+    >
       <div class="cart-head">
         <h3 id="cartTitle">Tu carrito</h3>
         <button class="cart-close" id="cartClose" aria-label="Cerrar carrito">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#0E0E0C" stroke-width="2" stroke-linecap="round">
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="#0E0E0C"
+            stroke-width="2"
+            stroke-linecap="round"
+          >
             <path d="M6 6l12 12M18 6L6 18" />
           </svg>
         </button>
       </div>
       <div class="cart-items" id="cartItems"></div>
       <div class="cart-foot" id="cartFoot">
-        <div class="cart-subtotal"><span>Subtotal</span><strong id="cartSubtotal">$0.00</strong></div>
-        <a class="btn btn-block" id="cartCheckout" href="#" target="_blank" rel="noopener"
+        <div class="cart-subtotal">
+          <span>Subtotal</span><strong id="cartSubtotal">$0.00</strong>
+        </div>
+        <div class="order-form" id="orderForm">
+          <input
+            type="text"
+            id="orderName"
+            placeholder="Tu nombre"
+            autocomplete="name"
+            aria-label="Tu nombre"
+          />
+          <div class="seg" role="radiogroup" aria-label="Entrega">
+            <label
+              ><input
+                type="radio"
+                name="orderDelivery"
+                value="tienda"
+                checked
+              /><span>Retiro en tienda</span></label
+            >
+            <label
+              ><input type="radio" name="orderDelivery" value="envio" /><span
+                >Envío</span
+              ></label
+            >
+          </div>
+          <input
+            type="text"
+            id="orderCity"
+            placeholder="Ciudad y zona de entrega"
+            autocomplete="address-level2"
+            aria-label="Ciudad y zona de entrega"
+            hidden
+          />
+          <select id="orderPay" aria-label="Método de pago"></select>
+        </div>
+        <div class="order-error" id="orderError" role="alert"></div>
+        <a
+          class="btn btn-block"
+          id="cartCheckout"
+          href="#"
+          target="_blank"
+          rel="noopener"
           >Finalizar pedido por WhatsApp</a
         >
+        <p class="order-note">
+          Te confirmamos disponibilidad y el total por WhatsApp.
+        </p>
       </div>
     </aside>
 
+    <a
+      class="wa-fab"
+      id="waFab"
+      href="#"
+      target="_blank"
+      rel="noopener"
+      aria-label="Escribir por WhatsApp"
+    >
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path
+          d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"
+        />
+      </svg>
+    </a>
+
     <!-- ===== LOCATION MODAL ===== -->
     <div id="mapScrim">
-      <div class="map-panel" role="dialog" aria-modal="true" aria-labelledby="mapTitle">
+      <div
+        class="map-panel"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="mapTitle"
+      >
         <div class="map-frame-wrap">
           <button class="modal-close" id="mapClose" aria-label="Cerrar">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#0E0E0C" stroke-width="2" stroke-linecap="round">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="#0E0E0C"
+              stroke-width="2"
+              stroke-linecap="round"
+            >
               <path d="M6 6l12 12M18 6L6 18" />
             </svg>
           </button>
@@ -2259,7 +2775,14 @@
         </div>
         <div class="map-body">
           <div class="modal-eyebrow">Tienda física</div>
-          <h3 id="mapTitle" style="font-family: var(--font-serif); font-size: 22px; font-weight: 500">
+          <h3
+            id="mapTitle"
+            style="
+              font-family: var(--font-serif);
+              font-size: 22px;
+              font-weight: 500;
+            "
+          >
             C.C. Camoruco - Local 3-12 (Anakel)
           </h3>
           <p>Maracaibo, Venezuela</p>
@@ -2284,6 +2807,10 @@
                                     false, el producto sale como "Agotado".
        • Poner en oferta .......... agrega salePrice: 20 (price queda como
                                     precio original tachado).
+       • Etiqueta "Nuevo" ......... agrega badge: "Nuevo" (bórralo cuando ya
+                                    no sea novedad).
+       • Enlace de un producto .... se genera solo (dtup.shop/#producto/...).
+                                    Para fijar uno propio agrega id: "mi-id".
        • Quitar un producto ....... borra su bloque { ... } completo.
        • Agregar un producto ...... copia un bloque { ... } dentro de su
                                     categoría y cambia los datos.
@@ -2374,7 +2901,11 @@
               name: "Franela estampado fotográfico ZARA",
               price: 25,
               sizes: [{ size: "L", available: true }],
-              images: ["images/p12-1.jpg", "images/p12-2.jpg", "images/p12-3.jpg"],
+              images: [
+                "images/p12-1.jpg",
+                "images/p12-2.jpg",
+                "images/p12-3.jpg",
+              ],
             },
             {
               name: "Franela textos estampados ZARA",
@@ -2410,13 +2941,21 @@
               name: "Pulse Pearl Oversized Tee EME STUDIOS",
               price: 80,
               sizes: [{ size: "L", available: true }],
-              images: ["images/p18-1.jpg", "images/p18-2.jpg", "images/p18-3.jpg"],
+              images: [
+                "images/p18-1.jpg",
+                "images/p18-2.jpg",
+                "images/p18-3.jpg",
+              ],
             },
             {
               name: "Franela estampado fotográfico ZARA",
               price: 25,
               sizes: [{ size: "L", available: true }],
-              images: ["images/p19-1.jpg", "images/p19-2.jpg", "images/p19-3.jpg"],
+              images: [
+                "images/p19-1.jpg",
+                "images/p19-2.jpg",
+                "images/p19-3.jpg",
+              ],
             },
             {
               name: "Franela logo STWD",
@@ -2447,19 +2986,33 @@
                 { size: "M", available: true },
                 { size: "L", available: true },
               ],
-              images: ["images/p23-1.jpg", "images/p23-2.jpg", "images/p23-3.jpg"],
+              images: [
+                "images/p23-1.jpg",
+                "images/p23-2.jpg",
+                "images/p23-3.jpg",
+              ],
             },
             {
               name: "Franela boxy Love Yourself P&B",
               price: 34,
               sizes: [{ size: "M", available: true }],
-              images: ["images/p24-1.jpg", "images/p24-2.jpg", "images/p24-3.jpg", "images/p24-4.jpg"],
+              images: [
+                "images/p24-1.jpg",
+                "images/p24-2.jpg",
+                "images/p24-3.jpg",
+                "images/p24-4.jpg",
+              ],
             },
             {
               name: "Franela boxy gráfico P&B",
               price: 36,
               sizes: [{ size: "L", available: true }],
-              images: ["images/p25-1.jpg", "images/p25-2.jpg", "images/p25-3.jpg", "images/p25-4.jpg"],
+              images: [
+                "images/p25-1.jpg",
+                "images/p25-2.jpg",
+                "images/p25-3.jpg",
+                "images/p25-4.jpg",
+              ],
             },
             {
               name: "Franela gráfico palmeras P&B",
@@ -2511,7 +3064,11 @@
               name: "Franela felpa print BERSHKA",
               price: 35,
               sizes: [{ size: "S", available: true }],
-              images: ["images/p32-1.jpg", "images/p32-2.jpg", "images/p32-3.jpg"],
+              images: [
+                "images/p32-1.jpg",
+                "images/p32-2.jpg",
+                "images/p32-3.jpg",
+              ],
             },
             {
               name: "Franela manga corta print BERSHKA",
@@ -2526,7 +3083,11 @@
                 { size: "M", available: true },
                 { size: "L", available: true },
               ],
-              images: ["images/p34-1.jpg", "images/p34-2.jpg", "images/p34-3.jpg"],
+              images: [
+                "images/p34-1.jpg",
+                "images/p34-2.jpg",
+                "images/p34-3.jpg",
+              ],
             },
             {
               name: "Franela con motivo estampado loose fit H&M",
@@ -2592,42 +3153,64 @@
               images: ["images/p43-front.jpg", "images/p43-back.jpg"],
             },
             {
+              badge: "Nuevo",
               name: "Franela estampada relaxed fit H&M",
               price: 32,
               sizes: [
                 { size: "XS", available: true },
                 { size: "S", available: true },
               ],
-              images: ["images/p44-1.jpg", "images/p44-2.jpg", "images/p44-3.jpg"],
+              images: [
+                "images/p44-1.jpg",
+                "images/p44-2.jpg",
+                "images/p44-3.jpg",
+              ],
             },
             {
+              badge: "Nuevo",
               name: "Franela con motivo estampado loose fit H&M",
               price: 32,
               sizes: [{ size: "S", available: true }],
-              images: ["images/p45-1.jpg", "images/p45-2.jpg", "images/p45-3.jpg"],
+              images: [
+                "images/p45-1.jpg",
+                "images/p45-2.jpg",
+                "images/p45-3.jpg",
+              ],
             },
             {
+              badge: "Nuevo",
               name: "Franela estampada relaxed fit H&M",
               price: 32,
               sizes: [{ size: "M", available: true }],
-              images: ["images/p46-1.jpg", "images/p46-2.jpg", "images/p46-3.jpg"],
+              images: [
+                "images/p46-1.jpg",
+                "images/p46-2.jpg",
+                "images/p46-3.jpg",
+              ],
             },
             {
+              badge: "Nuevo",
               name: "Franela estampada relaxed fit H&M",
               price: 32,
               sizes: [{ size: "S", available: true }],
               images: ["images/p47-front.jpg", "images/p47-back.jpg"],
             },
             {
+              badge: "Nuevo",
               name: "Franela estampada relaxed fit H&M",
               price: 32,
               sizes: [
                 { size: "S", available: true },
                 { size: "M", available: true },
               ],
-              images: ["images/p48-1.jpg", "images/p48-2.jpg", "images/p48-3.jpg"],
+              images: [
+                "images/p48-1.jpg",
+                "images/p48-2.jpg",
+                "images/p48-3.jpg",
+              ],
             },
             {
+              badge: "Nuevo",
               name: "Franelas regular fit H&M (precio c/u)",
               price: 25,
               sizes: [{ size: "S", available: true }],
@@ -2646,7 +3229,12 @@
                 { size: "S", available: true },
                 { size: "M", available: true },
               ],
-              images: ["images/p50-1.jpg", "images/p50-2.jpg", "images/p50-3.jpg", "images/p50-4.jpg"],
+              images: [
+                "images/p50-1.jpg",
+                "images/p50-2.jpg",
+                "images/p50-3.jpg",
+                "images/p50-4.jpg",
+              ],
             },
             {
               name: "Polo regular fit Knit ZARA",
@@ -2909,7 +3497,11 @@
       let scrollLockY = 0;
       function lockScroll() {
         if (overlayLockCount === 0) {
-          scrollLockY = window.scrollY || window.pageYOffset || document.documentElement.scrollTop || 0;
+          scrollLockY =
+            window.scrollY ||
+            window.pageYOffset ||
+            document.documentElement.scrollTop ||
+            0;
           document.body.style.position = "fixed";
           document.body.style.top = -scrollLockY + "px";
           document.body.style.left = "0";
@@ -2943,7 +3535,9 @@
         container.__trapHandler = function (e) {
           if (e.key !== "Tab") return;
           const items = Array.from(
-            container.querySelectorAll('a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])'),
+            container.querySelectorAll(
+              'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])',
+            ),
           ).filter((el) => el.offsetParent !== null);
           if (!items.length) return;
           const first = items[0],
@@ -2959,7 +3553,8 @@
         document.addEventListener("keydown", container.__trapHandler);
       }
       function releaseFocus(container) {
-        if (container.__trapHandler) document.removeEventListener("keydown", container.__trapHandler);
+        if (container.__trapHandler)
+          document.removeEventListener("keydown", container.__trapHandler);
         if (lastFocused) lastFocused.focus();
       }
 
@@ -2970,6 +3565,7 @@
         trapFocus(document.querySelector(".map-panel"));
       }
       function closeMap() {
+        if (!document.body.classList.contains("map-open")) return;
         document.body.classList.remove("map-open");
         unlockScroll();
         releaseFocus(document.querySelector(".map-panel"));
@@ -2982,10 +3578,30 @@
       /* ====== CONFIGURACIÓN ====== */
       const WHATSAPP_NUMBER = "584146207752";
       function waLink(text) {
-        return "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(text);
+        return (
+          "https://wa.me/" +
+          WHATSAPP_NUMBER +
+          "?text=" +
+          encodeURIComponent(text)
+        );
       }
 
-      ["heroWhatsapp", "ctaWhatsapp", "footWhatsapp", "menuWhatsapp"].forEach((id) => {
+      /* Métodos de pago que se ofrecen en el carrito (edita esta lista a gusto). */
+      const PAYMENT_METHODS = [
+        "Pago móvil",
+        "Zelle",
+        "Efectivo (USD)",
+        "Binance",
+        "Lo converso por WhatsApp",
+      ];
+
+      [
+        "heroWhatsapp",
+        "ctaWhatsapp",
+        "footWhatsapp",
+        "menuWhatsapp",
+        "waFab",
+      ].forEach((id) => {
         const el = document.getElementById(id);
         if (el) el.href = waLink("Hola, quisiera ver el catálogo de Dtup.");
       });
@@ -3018,8 +3634,16 @@
       const siteHeader = document.querySelector("header");
       function updateHeaderScroll() {
         siteHeader.classList.toggle("scrolled", window.scrollY > 8);
+        const fab = document.getElementById("waFab");
+        if (fab)
+          fab.classList.toggle(
+            "show",
+            window.scrollY > 480 || document.body.classList.contains("locked"),
+          );
       }
-      document.addEventListener("scroll", updateHeaderScroll, { passive: true });
+      document.addEventListener("scroll", updateHeaderScroll, {
+        passive: true,
+      });
       updateHeaderScroll();
 
       /* ====== ANIMACIÓN DE APARICIÓN ====== */
@@ -3036,10 +3660,35 @@
       );
 
       /* ====== TARJETAS DE PRODUCTOS ====== */
+      /* Enlace directo por producto: dtup.shop/#producto/<id> */
+      const PRODUCT_LINKS = {}; // id -> { catKey, item }
+      const PRODUCT_ID = new Map(); // item -> id
+      const PRODUCT_CARD = new Map(); // item -> tarjeta
+      function slugify(t) {
+        return String(t)
+          .toLowerCase()
+          .normalize("NFD")
+          .replace(/[\u0300-\u036f]/g, "")
+          .replace(/&/g, "")
+          .replace(/[^a-z0-9]+/g, "-")
+          .replace(/^-+|-+$/g, "");
+      }
+      function registerProduct(catKey, item) {
+        const base = item.id
+          ? slugify(item.id)
+          : catKey + "-" + slugify(item.name);
+        let id = base;
+        for (let n = 2; PRODUCT_LINKS[id]; n++) id = base + "-" + n;
+        PRODUCT_LINKS[id] = { catKey, item };
+        PRODUCT_ID.set(item, id);
+        return id;
+      }
+
       Object.keys(PRODUCTS).forEach((catKey) => {
         const cat = PRODUCTS[catKey];
         const grid = document.getElementById("grid-" + catKey);
         cat.items.forEach((item, i) => {
+          registerProduct(catKey, item);
           const inStock = hasStock(item);
           const defaultSize = firstAvailableSize(item);
           const card = document.createElement("div");
@@ -3048,9 +3697,18 @@
           card.setAttribute("tabindex", "0");
           card.setAttribute(
             "aria-label",
-            "Ver detalles de " + cat.label + " " + item.name + (inStock ? "" : ", agotado"),
+            "Ver detalles de " +
+              cat.label +
+              " " +
+              item.name +
+              (inStock ? "" : ", agotado"),
           );
-          card.style.transitionDelay = i * 60 + "ms";
+          card.style.transitionDelay = Math.min(i, 8) * 60 + "ms";
+          card.dataset.sizes = item.sizes
+            .filter((s) => s.available)
+            .map((s) => s.size)
+            .join(",");
+          PRODUCT_CARD.set(item, card);
 
           const media = item.images
             ? '<img src="' +
@@ -3072,12 +3730,17 @@
 
           card.innerHTML =
             '<div class="thumb"' +
-            (item.images ? "" : ' style="background:' + TINTS[i % TINTS.length] + '"') +
+            (item.images
+              ? ""
+              : ' style="background:' + TINTS[i % TINTS.length] + '"') +
             ">" +
             '<span class="tag">' +
             cat.label +
             "</span>" +
             (onOffer ? '<span class="offer-tag">Oferta</span>' : "") +
+            (item.badge && inStock
+              ? '<span class="new-tag">' + escHTML(item.badge) + "</span>"
+              : "") +
             (inStock ? "" : '<span class="sold-tag">Agotado</span>') +
             media +
             (inStock
@@ -3121,6 +3784,86 @@
         if (!el.classList.contains("product-card")) io.observe(el);
       });
 
+      /* ====== FILTRO POR TALLA (uno en cada sección) ====== */
+      const SIZE_ORDER = ["XXS", "XS", "S", "M", "L", "XL", "XXL", "XXXL"];
+      function sortSizes(a, b) {
+        const ia = SIZE_ORDER.indexOf(a),
+          ib = SIZE_ORDER.indexOf(b);
+        if (ia >= 0 && ib >= 0) return ia - ib;
+        if (ia >= 0) return -1;
+        if (ib >= 0) return 1;
+        return String(a).localeCompare(String(b), "es", { numeric: true });
+      }
+
+      Object.keys(PRODUCTS).forEach((catKey) => {
+        const cat = PRODUCTS[catKey];
+        const grid = document.getElementById("grid-" + catKey);
+        const sizes = [];
+        cat.items.forEach((it) =>
+          it.sizes.forEach((s) => {
+            if (s.available && sizes.indexOf(s.size) < 0) sizes.push(s.size);
+          }),
+        );
+        sizes.sort(sortSizes);
+        if (!sizes.length) return;
+
+        const bar = document.createElement("div");
+        bar.className = "size-filter";
+        bar.innerHTML =
+          '<span class="filter-label">Tu talla</span>' +
+          '<div class="filter-chips" role="group" aria-label="Filtrar ' +
+          cat.label.toLowerCase() +
+          's por talla"></div>' +
+          '<span class="filter-count" aria-live="polite"></span>';
+        const chipsEl = bar.querySelector(".filter-chips");
+        const countEl = bar.querySelector(".filter-count");
+        const empty = document.createElement("div");
+        empty.className = "filter-empty";
+        grid.parentNode.insertBefore(bar, grid);
+        grid.parentNode.appendChild(empty);
+
+        let active = "";
+        function apply() {
+          const cards = grid.querySelectorAll(".product-card");
+          let shown = 0;
+          cards.forEach((card) => {
+            const ok =
+              !active || card.dataset.sizes.split(",").indexOf(active) >= 0;
+            card.classList.toggle("filtered-out", !ok);
+            if (ok) shown++;
+          });
+          countEl.textContent = active
+            ? shown + " de " + cards.length + " en talla " + active
+            : cards.length + (cards.length === 1 ? " pieza" : " piezas");
+          chipsEl.querySelectorAll(".filter-chip").forEach((c) => {
+            const on = c.dataset.size === active;
+            c.classList.toggle("active", on);
+            c.setAttribute("aria-pressed", on ? "true" : "false");
+          });
+          empty.classList.toggle("show", shown === 0);
+          empty.innerHTML =
+            "No hay piezas en talla " +
+            active +
+            ' por ahora.<br><button type="button">Ver todas</button>';
+          const btn = empty.querySelector("button");
+          if (btn)
+            btn.addEventListener("click", () => ((active = ""), apply()));
+        }
+        [""].concat(sizes).forEach((size) => {
+          const b = document.createElement("button");
+          b.type = "button";
+          b.className = "filter-chip";
+          b.dataset.size = size;
+          b.textContent = size || "Todas";
+          b.addEventListener("click", () => {
+            active = size && active === size ? "" : size;
+            apply();
+          });
+          chipsEl.appendChild(b);
+        });
+        apply();
+      });
+
       /* ====== ESTADO DEL CARRITO ====== */
       const CART_STORAGE_KEY = "dtup_cart_v1";
 
@@ -3152,8 +3895,11 @@
 
       function addToCart(catKey, item, size, qty) {
         const cat = PRODUCTS[catKey];
-        const effectivePrice = typeof item.salePrice === "number" ? item.salePrice : item.price;
-        const existing = cart.find((c) => c.catKey === catKey && c.name === item.name && c.size === size);
+        const effectivePrice =
+          typeof item.salePrice === "number" ? item.salePrice : item.price;
+        const existing = cart.find(
+          (c) => c.catKey === catKey && c.name === item.name && c.size === size,
+        );
         if (existing) {
           existing.qty += qty;
         } else {
@@ -3169,14 +3915,24 @@
           });
         }
         renderCart();
-        announce(cat.label + " " + item.name + ", talla " + size + ", se agregó al carrito.");
+        announce(
+          cat.label +
+            " " +
+            item.name +
+            ", talla " +
+            size +
+            ", se agregó al carrito.",
+        );
       }
 
       function removeFromCart(index) {
         const removed = cart[index];
         cart.splice(index, 1);
         renderCart();
-        if (removed) announce(removed.label + " " + removed.name + " se quitó del carrito.");
+        if (removed)
+          announce(
+            removed.label + " " + removed.name + " se quitó del carrito.",
+          );
       }
 
       function changeQty(index, delta) {
@@ -3203,6 +3959,124 @@
       const cartFoot = document.getElementById("cartFoot");
       const cartSubtotal = document.getElementById("cartSubtotal");
       const cartCheckout = document.getElementById("cartCheckout");
+      const orderName = document.getElementById("orderName");
+      const orderCity = document.getElementById("orderCity");
+      const orderPay = document.getElementById("orderPay");
+      const orderError = document.getElementById("orderError");
+      const ORDER_STORAGE_KEY = "dtup_order_v1";
+
+      PAYMENT_METHODS.forEach((m) => {
+        const o = document.createElement("option");
+        o.value = m;
+        o.textContent = "Pago: " + m;
+        orderPay.appendChild(o);
+      });
+      function orderDelivery() {
+        const r = document.querySelector('input[name="orderDelivery"]:checked');
+        return r ? r.value : "tienda";
+      }
+      function saveOrderInfo() {
+        try {
+          localStorage.setItem(
+            ORDER_STORAGE_KEY,
+            JSON.stringify({
+              name: orderName.value,
+              delivery: orderDelivery(),
+              city: orderCity.value,
+              pay: orderPay.value,
+            }),
+          );
+        } catch (err) {
+          /* sin almacenamiento: no pasa nada */
+        }
+      }
+      (function restoreOrderInfo() {
+        try {
+          const d = JSON.parse(
+            localStorage.getItem(ORDER_STORAGE_KEY) || "null",
+          );
+          if (!d) return;
+          orderName.value = d.name || "";
+          orderCity.value = d.city || "";
+          if (PAYMENT_METHODS.indexOf(d.pay) >= 0) orderPay.value = d.pay;
+          const r = document.querySelector(
+            'input[name="orderDelivery"][value="' + d.delivery + '"]',
+          );
+          if (r) r.checked = true;
+        } catch (err) {
+          /* datos guardados dañados: se ignoran */
+        }
+      })();
+      function syncOrderForm() {
+        orderCity.hidden = orderDelivery() !== "envio";
+        orderName.classList.remove("invalid");
+        orderCity.classList.remove("invalid");
+        orderError.classList.remove("show");
+        saveOrderInfo();
+        updateCheckout();
+      }
+      function buildOrderMessage() {
+        let msg = "Hola, quiero hacer este pedido en Dtup:\n\n";
+        cart.forEach((c, i) => {
+          msg +=
+            i +
+            1 +
+            ". " +
+            c.label +
+            " " +
+            c.name +
+            ", talla " +
+            c.size +
+            " x" +
+            c.qty +
+            " — $" +
+            (c.price * c.qty).toFixed(2) +
+            "\n";
+          if (c.image)
+            msg += "   Foto: " + window.location.origin + "/" + c.image + "\n";
+        });
+        msg += "\nTotal: $" + cartTotal().toFixed(2) + "\n\n";
+        if (orderName.value.trim())
+          msg += "Nombre: " + orderName.value.trim() + "\n";
+        if (orderDelivery() === "envio") {
+          msg +=
+            "Entrega: Envío a " +
+            (orderCity.value.trim() || "(por confirmar)") +
+            "\n";
+        } else {
+          msg += "Entrega: Retiro en tienda (C.C. Camoruco, Local 3-12)\n";
+        }
+        msg += "Pago: " + orderPay.value;
+        return msg;
+      }
+      function updateCheckout() {
+        if (cart.length) cartCheckout.href = waLink(buildOrderMessage());
+      }
+      function validateOrder() {
+        const needName = !orderName.value.trim();
+        const needCity = orderDelivery() === "envio" && !orderCity.value.trim();
+        orderName.classList.toggle("invalid", needName);
+        orderCity.classList.toggle("invalid", needCity);
+        if (needName || needCity) {
+          orderError.textContent = needName
+            ? "Escribe tu nombre para enviar el pedido."
+            : "Indica tu ciudad y zona para el envío.";
+          orderError.classList.add("show");
+          (needName ? orderName : orderCity).focus();
+          return false;
+        }
+        orderError.classList.remove("show");
+        return true;
+      }
+      orderName.addEventListener("input", syncOrderForm);
+      orderCity.addEventListener("input", syncOrderForm);
+      orderPay.addEventListener("change", syncOrderForm);
+      document
+        .querySelectorAll('input[name="orderDelivery"]')
+        .forEach((r) => r.addEventListener("change", syncOrderForm));
+      cartCheckout.addEventListener("click", (e) => {
+        if (!validateOrder()) e.preventDefault();
+      });
 
       function renderCart() {
         saveCart();
@@ -3225,7 +4099,13 @@
           row.className = "cart-item";
           row.innerHTML =
             '<div class="thumb">' +
-            (c.image ? '<img src="' + c.image + '" alt="' + c.name + '" loading="lazy">' : ICONS[c.icon]) +
+            (c.image
+              ? '<img src="' +
+                c.image +
+                '" alt="' +
+                c.name +
+                '" loading="lazy">'
+              : ICONS[c.icon]) +
             "</div>" +
             '<div class="info">' +
             '<div class="cname">' +
@@ -3250,37 +4130,23 @@
             "</div>" +
             '<button class="cremove" type="button">Quitar</button>' +
             "</div>";
-          row.querySelector('[data-act="minus"]').addEventListener("click", () => changeQty(i, -1));
-          row.querySelector('[data-act="plus"]').addEventListener("click", () => changeQty(i, 1));
-          row.querySelector(".cremove").addEventListener("click", () => removeFromCart(i));
+          row
+            .querySelector('[data-act="minus"]')
+            .addEventListener("click", () => changeQty(i, -1));
+          row
+            .querySelector('[data-act="plus"]')
+            .addEventListener("click", () => changeQty(i, 1));
+          row
+            .querySelector(".cremove")
+            .addEventListener("click", () => removeFromCart(i));
           cartItemsEl.appendChild(row);
         });
 
         cartSubtotal.textContent = "$" + cartTotal().toFixed(2);
 
-        let msg = "Hola, quiero hacer este pedido:\n";
-        cart.forEach((c, i) => {
-          msg +=
-            i +
-            1 +
-            ". " +
-            c.label +
-            " " +
-            c.name +
-            ", talla " +
-            c.size +
-            " x" +
-            c.qty +
-            " — $" +
-            (c.price * c.qty).toFixed(2) +
-            "\n";
-          if (c.image) {
-            msg += "   Foto: " + window.location.origin + "/" + c.image + "\n";
-          }
-        });
-        msg += "\nTotal: $" + cartTotal().toFixed(2);
-        cartCheckout.href = waLink(msg);
+        updateCheckout();
       }
+      orderCity.hidden = orderDelivery() !== "envio";
       renderCart();
 
       /* ====== ABRIR Y CERRAR EL CARRITO ====== */
@@ -3291,6 +4157,7 @@
         trapFocus(document.getElementById("cartDrawer"));
       }
       function closeCart() {
+        if (!document.body.classList.contains("cart-open")) return;
         document.body.classList.remove("cart-open");
         unlockScroll();
         releaseFocus(document.getElementById("cartDrawer"));
@@ -3313,6 +4180,10 @@
       const qtyVal = document.getElementById("qtyVal");
       const qtyMinus = document.getElementById("qtyMinus");
       const qtyPlus = document.getElementById("qtyPlus");
+      const modalStock = document.getElementById("modalStock");
+      const modalShare = document.getElementById("modalShare");
+      const modalShareLabel = document.getElementById("modalShareLabel");
+      const modalAsk = document.getElementById("modalAsk");
 
       let modalState = null;
 
@@ -3346,7 +4217,10 @@
           const chip = document.createElement("button");
           chip.type = "button";
           const isDefault = s.size === defaultSize;
-          chip.className = "size-chip" + (isDefault ? " active" : "") + (s.available ? "" : " unavailable");
+          chip.className =
+            "size-chip" +
+            (isDefault ? " active" : "") +
+            (s.available ? "" : " unavailable");
           chip.textContent = s.size;
           chip.setAttribute("aria-pressed", isDefault ? "true" : "false");
           if (!s.available) {
@@ -3354,7 +4228,9 @@
             chip.setAttribute("aria-label", "Talla " + s.size + ", agotada");
           } else {
             chip.addEventListener("click", () => {
-              modalSizes.querySelectorAll(".size-chip").forEach((c) => c.classList.remove("active"));
+              modalSizes
+                .querySelectorAll(".size-chip")
+                .forEach((c) => c.classList.remove("active"));
               modalSizes
                 .querySelectorAll(".size-chip")
                 .forEach((c) => c.setAttribute("aria-pressed", "false"));
@@ -3365,6 +4241,30 @@
           }
           modalSizes.appendChild(chip);
         });
+
+        const open = item.sizes.filter((s) => s.available);
+        modalStock.textContent =
+          open.length === 1 ? "Solo queda la talla " + open[0].size + "." : "";
+
+        const pid = PRODUCT_ID.get(item);
+        modalState.url = location.href.split("#")[0] + "#producto/" + pid;
+        modalShareLabel.textContent = "Copiar enlace";
+        modalAsk.href = waLink(
+          "Hola, quiero preguntar por: " +
+            item.name +
+            " ($" +
+            (typeof item.salePrice === "number"
+              ? item.salePrice
+              : item.price
+            ).toFixed(2) +
+            ")\n" +
+            modalState.url,
+        );
+        try {
+          history.replaceState(null, "", "#producto/" + pid);
+        } catch (err) {
+          /* sin historial: el enlace igual se puede copiar */
+        }
 
         document.body.classList.add("modal-open");
         lockScroll();
@@ -3379,7 +4279,8 @@
         const images = item.images || [];
 
         if (images.length) {
-          modalIcon.innerHTML = '<img src="' + images[imgIndex] + '" alt="' + item.name + '">';
+          modalIcon.innerHTML =
+            '<img src="' + images[imgIndex] + '" alt="' + item.name + '">';
 
           const multi = images.length > 1;
           modalPrevImg.style.display = multi ? "flex" : "none";
@@ -3426,7 +4327,12 @@
 
       modalAdd.addEventListener("click", () => {
         if (!modalState || !modalState.size) return;
-        addToCart(modalState.catKey, modalState.item, modalState.size, modalState.qty);
+        addToCart(
+          modalState.catKey,
+          modalState.item,
+          modalState.size,
+          modalState.qty,
+        );
         pulseCartBadge();
         modalAdd.textContent = "Añadido ✓";
         modalAdd.disabled = true;
@@ -3435,15 +4341,80 @@
         }, 650);
       });
 
-      document.getElementById("modalClose").addEventListener("click", closeModal);
+      document
+        .getElementById("modalClose")
+        .addEventListener("click", closeModal);
       modalScrim.addEventListener("click", (e) => {
         if (e.target === modalScrim) closeModal();
       });
       function closeModal() {
+        if (!document.body.classList.contains("modal-open")) return;
         document.body.classList.remove("modal-open");
         unlockScroll();
         releaseFocus(document.querySelector(".modal-panel"));
+        if (location.hash.indexOf("#producto/") === 0) {
+          try {
+            history.replaceState(null, "", location.pathname + location.search);
+          } catch (err) {
+            /* nada */
+          }
+        }
       }
+
+      function copyText(text) {
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          return navigator.clipboard.writeText(text);
+        }
+        return new Promise((resolve, reject) => {
+          const ta = document.createElement("textarea");
+          ta.value = text;
+          ta.setAttribute("readonly", "");
+          ta.style.cssText = "position:fixed;top:0;left:0;opacity:0";
+          document.body.appendChild(ta);
+          ta.select();
+          const ok = document.execCommand && document.execCommand("copy");
+          ta.remove();
+          ok ? resolve() : reject(new Error("copy"));
+        });
+      }
+      modalShare.addEventListener("click", () => {
+        if (!modalState) return;
+        const { item, url } = modalState;
+        const done = (txt) => {
+          modalShareLabel.textContent = txt;
+          setTimeout(
+            () => (modalShareLabel.textContent = "Copiar enlace"),
+            2000,
+          );
+        };
+        if (navigator.share && window.matchMedia("(hover: none)").matches) {
+          navigator
+            .share({ title: item.name + " — Dtup", url })
+            .catch(() => {});
+        } else {
+          copyText(url).then(
+            () => done("Enlace copiado ✓"),
+            () => done("No se pudo copiar"),
+          );
+        }
+      });
+
+      /* ====== ABRIR UN PRODUCTO DESDE EL ENLACE (#producto/...) ====== */
+      function openFromHash() {
+        if (location.hash.indexOf("#producto/") !== 0) return;
+        const id = decodeURIComponent(location.hash.slice("#producto/".length));
+        const hit = PRODUCT_LINKS[id];
+        if (!hit) return;
+        closeSearch();
+        closeMenu();
+        closeCart();
+        closeModal();
+        const card = PRODUCT_CARD.get(hit.item);
+        if (card && card.offsetParent !== null)
+          card.scrollIntoView({ block: "center" });
+        openModal(hit.catKey, hit.item);
+      }
+      window.addEventListener("hashchange", openFromHash);
 
       /* ====== BUSCADOR ====== */
       const searchToggle = document.getElementById("searchToggle");
@@ -3461,27 +4432,47 @@
           .normalize("NFD")
           .replace(/[\u0300-\u036f]/g, "");
       const CAT_WORDS = {
-        franelas: "franela franelas camiseta camisetas playera playeras tee t-shirt",
+        franelas:
+          "franela franelas camiseta camisetas playera playeras tee t-shirt",
         polos: "polo polos",
         camisas: "camisa camisas",
         hoodies: "hoodie hoodies sudadera sudaderas capucha chaqueta chaquetas",
         pantalones: "pantalon pantalones jogger cargo",
         bermudas: "bermuda bermudas short shorts",
       };
-      const SEARCH_ORDER = ["franelas", "polos", "camisas", "hoodies", "pantalones", "bermudas"];
+      const SEARCH_ORDER = [
+        "franelas",
+        "polos",
+        "camisas",
+        "hoodies",
+        "pantalones",
+        "bermudas",
+      ];
       const SEARCH_INDEX = [];
-      SEARCH_ORDER.concat(Object.keys(PRODUCTS).filter((k) => SEARCH_ORDER.indexOf(k) < 0)).forEach(
-        (catKey) => {
-          const cat = PRODUCTS[catKey];
-          if (!cat) return;
-          cat.items.forEach((item) => {
-            const hay = normTxt(
-              cat.label + " " + (CAT_WORDS[catKey] || catKey) + " " + item.name + " $" + item.price,
-            );
-            SEARCH_INDEX.push({ catKey, cat, item, hay, hayC: hay.replace(/[^a-z0-9]/g, "") });
+      SEARCH_ORDER.concat(
+        Object.keys(PRODUCTS).filter((k) => SEARCH_ORDER.indexOf(k) < 0),
+      ).forEach((catKey) => {
+        const cat = PRODUCTS[catKey];
+        if (!cat) return;
+        cat.items.forEach((item) => {
+          const hay = normTxt(
+            cat.label +
+              " " +
+              (CAT_WORDS[catKey] || catKey) +
+              " " +
+              item.name +
+              " $" +
+              item.price,
+          );
+          SEARCH_INDEX.push({
+            catKey,
+            cat,
+            item,
+            hay,
+            hayC: hay.replace(/[^a-z0-9]/g, ""),
           });
-        },
-      );
+        });
+      });
 
       function escHTML(t) {
         return String(t).replace(
@@ -3517,12 +4508,14 @@
             '" target="_blank" rel="noopener">pregúntanos por WhatsApp</a>.</div>';
           return;
         }
-        searchMeta.textContent = found.length + (found.length === 1 ? " resultado" : " resultados");
+        searchMeta.textContent =
+          found.length + (found.length === 1 ? " resultado" : " resultados");
         searchResults.innerHTML = "";
         found.forEach((e) => {
           const inStock = hasStock(e.item);
           const onOffer = typeof e.item.salePrice === "number";
-          const price = "$" + (onOffer ? e.item.salePrice : e.item.price).toFixed(2);
+          const price =
+            "$" + (onOffer ? e.item.salePrice : e.item.price).toFixed(2);
           const thumb = e.item.images
             ? '<img src="' + e.item.images[0] + '" alt="" loading="lazy">'
             : ICONS[e.cat.icon];
@@ -3542,7 +4535,11 @@
             "</div>" +
             '<div class="sr-sub">' +
             escHTML(e.cat.label) +
-            (inStock ? (sizes ? " · Tallas " + sizes : "") : ' · <span class="sr-sold">Agotado</span>') +
+            (inStock
+              ? sizes
+                ? " · Tallas " + sizes
+                : ""
+              : ' · <span class="sr-sold">Agotado</span>') +
             "</div></span>" +
             '<span class="sr-price">' +
             price +
@@ -3626,6 +4623,7 @@
       const menuLabel = document.getElementById("menuLabel");
       const menuOverlayEl = document.getElementById("menuOverlay");
       function closeMenu() {
+        if (!document.body.classList.contains("menu-open")) return;
         document.body.classList.remove("menu-open");
         unlockScroll();
         menuToggle.setAttribute("aria-expanded", "false");
@@ -3662,6 +4660,8 @@
           if (e.key === "ArrowRight") stepModalImage(1);
         }
       });
+
+      openFromHash();
     </script>
   </body>
 </html>
